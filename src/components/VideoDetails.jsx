@@ -12,7 +12,7 @@ function VideoDetails() {
   const [relatedVideos, setRelatedVideos] = useState(null);
   useEffect(() => {
     GetVideos(`videos?part=snippet&statistics&id=${id}`).then((data) =>
-      setVideoDetails(data.items[0])
+      setVideoDetails(data?.items[0])
     );
     GetVideos(`search?part=snippet&relatedToVideoId=${id}&type=video`).then(
       (data) => setRelatedVideos(data.items)

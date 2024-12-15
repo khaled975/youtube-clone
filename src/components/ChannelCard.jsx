@@ -4,6 +4,13 @@ import { Link } from "react-router-dom";
 
 import { demoChannelTitle, demoProfilePicture } from "../utils/constants";
 function ChannelCard({ channelDetail, marginTop }) {
+  if (!channelDetail?.snippet)
+    return (
+      <Typography variant="subtitle2" color="#fff">
+        loading...
+      </Typography>
+    );
+  console.log(channelDetail);
 
   return (
     <Box
@@ -33,7 +40,7 @@ function ChannelCard({ channelDetail, marginTop }) {
               channelDetail?.snippet?.thumbnails?.high?.url ||
               demoProfilePicture
             }
-            alt={channelDetail?.channelTitle || demoChannelTitle}
+            alt={channelDetail?.snippet?.title || demoChannelTitle}
             sx={{
               width: "100px",
               height: "100px",
@@ -42,7 +49,7 @@ function ChannelCard({ channelDetail, marginTop }) {
             }}
           />
           <Typography variant="h6" color="#fff">
-            {channelDetail?.channelTitle || demoChannelTitle}
+            {channelDetail?.snippet?.title || demoChannelTitle}
             <CheckCircle sx={{ fontSize: 15, color: "gray", ml: "5px" }} />
           </Typography>
           {channelDetail?.statistics && (

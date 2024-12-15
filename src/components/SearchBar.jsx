@@ -9,10 +9,9 @@ function SearchBar() {
   function handleSubmit(e) {
     e.preventDefault();
     if (searchTerm) {
-      navigate(`search/${searchTerm}`);
-
-      setSearchTerm("");
+      navigate(`/search/${searchTerm}`);
     }
+    setSearchTerm("");
   }
   return (
     <Paper
